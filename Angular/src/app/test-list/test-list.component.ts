@@ -32,7 +32,7 @@ export class TestListComponent{
     const headers= new HttpHeaders()
       .set('content-type', 'application/json');
 
-    this.http.get<any>('https://projetcube.cv-dev-web.fr/apiPlatform/resources?page=1', { 'headers': {'content-type': 'application/json'} }).subscribe(data => {
+    this.http.get<any>('https://projetcube.cv-dev-web.fr/apiPlatform/resources', { 'headers': {'content-type': 'application/json'} }).subscribe(data => {
       this.post = data['hydra:member']; 
       this.dataSource = new MatTableDataSource(this.post);
       console.log(data)

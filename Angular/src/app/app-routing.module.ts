@@ -4,12 +4,13 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AuthguardGuard } from './services/auth-guard.service';
 import { RessourcesListComponent } from './ressources-list/ressources-list.component';
 import { RessourcesAddComponent } from './ressources-add/ressources-add.component';
 import { RessourcesViewComponent } from './ressources-view/ressources-view.component';
 import { ParametresComponent } from './parametres/parametres.component';
 import { TestListComponent } from './test-list/test-list.component';
+import { AuthGuard } from './shared/auth.guard';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
 { path: '', component: LoginComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
 { path: 'ressourcesView', component: RessourcesViewComponent },
 { path: 'ressourcesAdd', component: RessourcesAddComponent },
 { path: 'parametres', component: ParametresComponent },
-{ path: 'dashboard', component: DashboardComponent,canActivate: [AuthguardGuard] }
+{ path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard] },
+{ path: 'user-profile/:id', component: UserProfileComponent, canActivate: [AuthGuard] }
 
 ]
 

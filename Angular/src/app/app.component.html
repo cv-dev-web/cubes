@@ -23,7 +23,7 @@
           <a class="nav-link" aria-current="page" href="#" routerLink="home" routerLinkActive="active">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="test" routerLinkActive="active">Ressources</a>
+          <a class="nav-link" href="#" routerLink="ressourcesList" routerLinkActive="active">Ressources</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="#" routerLink="ressourcesList" routerLinkActive="active">Link</a>
@@ -35,7 +35,7 @@
 
       <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll ms-1" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
-          <a class="nav-link" *ngIf="loginbtn" routerLink="login" routerLinkActive="active">Se connecter</a>
+          <a class="nav-link" *ngIf="!this.authService.isLoggedIn" routerLink="login" routerLinkActive="active">Se connecter</a>
         </li>
       </ul>
 
@@ -47,14 +47,14 @@
 
       <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll ms-1" style="--bs-scroll-height: 100px;">
         <li class="nav-item dropdown" routerLinkActive="active">
-          <a  class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="logoutbtn" routerLinkActive="active">
+          <a  class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="this.authService.isLoggedIn" routerLinkActive="active">
             Mon compte
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
             <li><a class="dropdown-item" href="#" routerLink="parametres" routerLinkActive="active">Paramètres</a></li>
             <li><a class="dropdown-item" href="#">Messages</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#" (click)="logout()">Se déconnecter</a></li>
+            <li><a class="dropdown-item" href="#" (click)="logout()" *ngIf="this.authService.isLoggedIn">Se déconnecter</a></li>
           </ul>
         </li>
       </ul>

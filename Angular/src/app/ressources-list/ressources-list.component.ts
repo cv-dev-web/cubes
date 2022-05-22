@@ -1,28 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { RessourcesViewComponent } from '../ressources-view/ressources-view.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
-export interface UserElement {
-  name: string;
-  position: number;
-  email: string;
-}
-
-const ELEMENT_DATA: UserElement[] = [
-  { position: 1, name: 'John', email: 'john@gmail.com' },
-  { position: 2, name: 'Herry', email: 'herry@gmail.com' },
-  { position: 3, name: 'Ann', email: 'ann@gmail.com' },
-  { position: 4, name: 'Johnny', email: 'johnny@gmail.com' },
-  { position: 5, name: 'Roy', email: 'roy@gmail.com' },
-  { position: 6, name: 'Kia', email: 'kia@gmail.com' },
-  { position: 7, name: 'Merry', email: 'merry@gmail.com' },
-  { position: 8, name: 'William', email: 'william@gmail.com' },
-  { position: 9, name: 'Shia', email: 'shia@gmail.com' },
-  { position: 10, name: 'Kane', email: 'kane@gmail.com' },
-];
 
 @Component({
   selector: 'app-ressources-list',
@@ -30,17 +12,47 @@ const ELEMENT_DATA: UserElement[] = [
   styleUrls: ['./ressources-list.component.css']
 })
 export class RessourcesListComponent{
+  displayedColumns = ['user', 'title', 'id'];
+  post : any;
 
-  displayedColumns: string[] = ['position', 'name', 'email'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  //dataSource:any;
+  dataSource: MatTableDataSource<any>;
+  
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef){
+    
+    // this.http.get('http://localhost:8000/apiPlatform/resources?page=1').subscribe(data => {
+      
+      
+    //   this.post = data ; 
+    //   this.dataSource = new MatTableDataSource(this.post);
+    //   alert(this.getConfig)
+    // }, error => console.error(error));
+
+    
+    const headers= new HttpHeaders()
+      .set('content-type', 'application/json');
+
+    this.http.get<any>('https://projetcube.cv-dev-web.fr/apiPlatform/resources', { 'headers': {'content-type': 'application/json'} }).subscribe(data => {
+      this.post = data['hydra:member']; 
+      this.dataSource = new MatTableDataSource(this.post);
+      this.cdr.detectChanges();
+      console.log(data)
+      console.log(this.post)
+    }, error => console.error(error));
+  
+
+  }
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
 
+  ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(event: Event) {
@@ -48,5 +60,10 @@ export class RessourcesListComponent{
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
+}
+export interface PeriodicElement {
+  user: any;
+  title: any;
+  id: any;
+ 
 }
