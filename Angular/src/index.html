@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CUBE1</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(){
+      
+      el_autohide = document.querySelector('.autohide');
+      
+      // add padding-top to bady (if necessary)
+      navbar_height = document.querySelector('.navbar').offsetHeight;
+      document.body.style.paddingTop = navbar_height + 'px';
+  
+      if(el_autohide){
+        
+        var last_scroll_top = 0;
+        window.addEventListener('scroll', function() {
+               let scroll_top = window.scrollY;
+             if(scroll_top < last_scroll_top) {
+                  el_autohide.classList.remove('scrolled-down');
+                  el_autohide.classList.add('scrolled-up');
+              }
+              else {
+                  el_autohide.classList.remove('scrolled-up');
+                  el_autohide.classList.add('scrolled-down');
+              }
+              last_scroll_top = scroll_top;
+  
+        }); 
+        // window.addEventListener
+  
+      }
+      // if
+      
+    }); 
+    // DOMContentLoaded  end
+  
+  
+  </script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="mat-typography">
+  <app-root></app-root>
+</body>
+</html>

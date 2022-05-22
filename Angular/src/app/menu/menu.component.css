@@ -1,0 +1,33 @@
+#header{
+    background-color: white;
+    box-shadow: 0px 0.5px 10px 0px rgba(0, 0, 0, .3);
+}
+
+#logo{
+    width : 100px;
+}
+
+.link-menu.active{
+    color: #ed2939;
+}
+
+.link-menu:hover.active, .link-menu:focus.active {
+    color: #b02a37;
+  }
+
+
+.autohide{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030;
+}
+.scrolled-down{
+    transform:translateY(-100%); transition: all 0.3s ease-in-out;
+}
+.scrolled-up{
+    transform:translateY(0); transition: all 0.3s ease-in-out;
+}
+

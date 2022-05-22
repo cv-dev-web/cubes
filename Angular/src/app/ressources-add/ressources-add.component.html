@@ -1,0 +1,92 @@
+
+
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-11 col-lg-11 col-xl-11">
+        <div class="card bg-danger text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+  
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <div class="form-outline form-white mb-4 col-2">
+                <button class="btn btn-outline-light btn-lg px-5" (click)="back()">Retour</button>
+            </div>
+              <h2 class="fw-bold mb-2 mb-5">Ajouter une ressource</h2>
+              
+              <form class="row">
+
+                <div class="form-outline form-white mb-4">
+                  <input type="text" id="titre" name="titre" formControlName="titre" class="form-control form-control-lg" />
+                  <label class="form-label" for="titre">Titre</label>
+                </div>
+                <div class="form-outline form-white mb-4 col-4">
+                    <select name="categorie" id="categorie" formControlName="categorie" class="form-control form-control-lg">
+                        <option value="469">Communication</option>
+                        <option value="470">Culture</option>
+                        <option value="471">Developpement Personnel</option>
+                        <option value="472">Intelligence Emotionnelle</option>
+                        <option value="473">Loisirs</option>
+                        <option value="474">Monde Professionnel</option>
+                        <option value="475">Parentalité</option>
+                        <option value="476">Qualité de vie</option>
+                        <option value="477">Recherche de sens</option>
+                        <option value="478">Santé Physique</option>
+                        <option value="479">Santé Psychique</option>
+                        <option value="480">Spiritualité</option>
+                        <option value="481">Vie Affective</option>
+                        <option value="482">Robotiques</option>
+                    </select>
+                    <label class="form-label" for="categorie">Catégorie</label>
+                  </div>
+
+                  <div class="form-outline form-white mb-4 col-4">
+                    <select name="type" id="type" formControlName="type" class="form-control form-control-lg">
+                      <option value="201">Activité - Jeu à réaliser</option>
+                      <option value="202">Article</option>
+                      <option value="203">Carte de défi</option>
+                      <option value="204">Cours au format PDF</option>
+                      <option value="205">Exercice - Atelier</option>
+                      <option value="206">Fiche de lecture</option>
+                      <option value="207">Jeu en ligne</option>
+                      <option value="208">Vidéo</option>
+                    </select>
+                    <label class="form-label" for="type">Type</label>
+                  </div>
+
+                  <div class="form-outline form-white mb-4 col-4">
+                    <select name="visibilite" id="visibilite" formControlName="visibilite" class="form-control form-control-lg">
+                        <option value="1">Publique</option>
+                        <option value="2">Privée</option>
+                        <option value="0">Brouillon</option>
+                    </select>
+                    <label class="form-label" for="visibilite">Visibilité</label>
+                  </div> 
+
+                  <div class="form-outline form-white mb-4 col-6">
+                    <input type="file" id="image" name="image" formControlName="image" class="form-control form-control-lg" />
+                    <label class="form-label" for="image">Image</label>
+                  </div>
+                  <div class="form-outline form-white mb-4 col-6">
+                    <input type="file" id="video" name="video" formControlName="video" class="form-control form-control-lg" />
+                    <label class="form-label" for="video">Vidéo</label>
+                  </div>
+
+                <div class="form-outline form-white mb-4">
+                    <textarea id="description" name="description" formControlName="description" class="form-control form-control-lg"></textarea>
+                    <label class="form-label" for="description">Description</label>
+                  </div>
+  
+               
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Confirmer la ressource</button>
+  
+         
+              </form>
+  
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <br> <br> <br> <br> 
